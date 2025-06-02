@@ -1,5 +1,5 @@
 package com.daniel.productservice.repository;
-import com.daniel.productservice.entity.Product;
+import com.daniel.productservice.model.product.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

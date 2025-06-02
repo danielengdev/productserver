@@ -1,10 +1,9 @@
 package com.daniel.productservice.controller;
 
-import com.daniel.productservice.controller.dto.ProductRequestDTO;
-import com.daniel.productservice.controller.dto.ProductResponseDTO;
-import com.daniel.productservice.controller.mapper.ProductMapper;
+import com.daniel.productservice.model.product.ProductRequestDTO;
+import com.daniel.productservice.model.product.ProductResponseDTO;
+import com.daniel.productservice.mapper.ProductMapper;
 import com.daniel.productservice.service.ProductService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,11 +12,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/products")
-@RequiredArgsConstructor
 public class ProductController {
 
     private final ProductService service;
     private final ProductMapper mapper;
+
+    public ProductController(ProductService service, ProductMapper mapper) {
+        this.service = service;
+        this.mapper = mapper;
+    }
 
     @GetMapping
     public List<ProductResponseDTO> getAll() {

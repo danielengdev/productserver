@@ -1,5 +1,6 @@
-package com.daniel.productservice.entity;
+package com.daniel.productservice.model.category;
 
+import com.daniel.productservice.model.product.Product;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -7,12 +8,9 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Data
 public class Category {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,6 +18,9 @@ public class Category {
     private String name;
 
     private String description;
+
+    @Column(nullable = false, columnDefinition = "boolean default true")
+    private boolean active = true;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference

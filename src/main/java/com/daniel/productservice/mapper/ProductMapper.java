@@ -1,7 +1,7 @@
-package com.daniel.productservice.controller.mapper;
-import com.daniel.productservice.controller.dto.ProductRequestDTO;
-import com.daniel.productservice.controller.dto.ProductResponseDTO;
-import com.daniel.productservice.entity.Product;
+package com.daniel.productservice.mapper;
+import com.daniel.productservice.model.product.ProductRequestDTO;
+import com.daniel.productservice.model.product.ProductResponseDTO;
+import com.daniel.productservice.model.product.Product;
 import org.springframework.stereotype.Component;
 
 @Component

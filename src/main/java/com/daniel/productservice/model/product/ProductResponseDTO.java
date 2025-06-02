@@ -1,4 +1,4 @@
-package com.daniel.productservice.controller.dto;
+package com.daniel.productservice.model.product;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

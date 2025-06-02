@@ -1,5 +1,6 @@
-package com.daniel.productservice.entity;
+package com.daniel.productservice.model.product;
 
+import com.daniel.productservice.model.category.Category;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -7,11 +8,10 @@ import lombok.*;
 import java.math.BigDecimal;
 
 @Entity
-@Getter
-@Setter
+@Data
+@Builder //permite utilizar o padrão builder no ProductMapper
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class Product {
 
     @Id

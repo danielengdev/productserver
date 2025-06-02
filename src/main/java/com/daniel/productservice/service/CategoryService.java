@@ -1,6 +1,6 @@
 package com.daniel.productservice.service;
 
-import com.daniel.productservice.entity.Category;
+import com.daniel.productservice.model.category.Category;
 import com.daniel.productservice.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

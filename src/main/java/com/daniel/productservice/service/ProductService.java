@@ -1,6 +1,6 @@
 package com.daniel.productservice.service;
 
-import com.daniel.productservice.entity.Product;
+import com.daniel.productservice.model.product.Product;
 import com.daniel.productservice.exceptions.RecursoNaoEncontradoException;
 import com.daniel.productservice.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;

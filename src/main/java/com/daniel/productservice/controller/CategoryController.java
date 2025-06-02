@@ -1,9 +1,8 @@
 package com.daniel.productservice.controller;
 
-import com.daniel.productservice.entity.Category;
+import com.daniel.productservice.model.category.Category;
 import com.daniel.productservice.service.CategoryService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,7 +13,6 @@ public class CategoryController {
 
     private final CategoryService service;
 
-    @Autowired
     public CategoryController(CategoryService service) {
         this.service = service;
     }
