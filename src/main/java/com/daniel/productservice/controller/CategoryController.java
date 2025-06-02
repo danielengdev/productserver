@@ -2,6 +2,7 @@ package com.daniel.productservice.controller;
 
 import com.daniel.productservice.model.category.Category;
 import com.daniel.productservice.service.CategoryService;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
