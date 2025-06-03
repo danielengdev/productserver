@@ -1,8 +1,11 @@
 package com.daniel.productservice.controller;
 
-import com.daniel.productservice.model.category.Category;
+import com.daniel.productservice.model.category.CategoryRequestDTO;
+import com.daniel.productservice.model.category.CategoryResponseDTO;
+import com.daniel.productservice.mapper.CategoryMapper;
 import com.daniel.productservice.service.CategoryService;
-
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,29 +15,37 @@ import java.util.List;
 public class CategoryController {
 
     private final CategoryService service;
+    private final CategoryMapper mapper;
 
-    public CategoryController(CategoryService service) {
+    public CategoryController(CategoryService service, CategoryMapper mapper) {
         this.service = service;
+        this.mapper = mapper;
     }
 
     @GetMapping
-    public List<Category> getAll() {
-        return service.getAll();
+    public List<CategoryResponseDTO> getAll() {
+        return service.getAll().stream()
+                .map(mapper::toDTO)
+                .toList();
     }
 
     @GetMapping("/{id}")
-    public Category getById(@PathVariable Long id) {
-        return service.getById(id).orElseThrow();
+    public ResponseEntity<CategoryResponseDTO> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(mapper.toDTO(service.getById(id)));
     }
 
     @PostMapping
-    public Category create(@RequestBody Category category) {
-        return service.save(category);
+    public CategoryResponseDTO create(@Valid @RequestBody CategoryRequestDTO request) {
+        var category = mapper.toEntity(request);
+        return mapper.toDTO(service.save(category));
     }
 
     @PutMapping("/{id}")
-    public Category update(@PathVariable Long id, @RequestBody Category category) {
-        return service.update(id, category);
+    public CategoryResponseDTO update(
+            @PathVariable Long id,
+            @Valid @RequestBody CategoryRequestDTO request) {
+        var category = mapper.toEntity(request);
+        return mapper.toDTO(service.update(id, category));
     }
 
     @DeleteMapping("/{id}")
